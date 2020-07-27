@@ -144,7 +144,8 @@ public class Magnetometer extends CordovaPlugin implements SensorEventListener  
         // If found, then register as listener
         if (list != null && list.size() > 0) {
             this.mSensor = list.get(0);
-            this.sensorManager.registerListener(this, this.mSensor, SensorManager.SENSOR_DELAY_NORMAL);
+            this.sensorManager.registerListener(this, this.mSensor, SensorManager.SENSOR_DELAY_FASTEST
+);
             this.lastAccessTime = System.currentTimeMillis();
             this.setStatus(Magnetometer.STARTING);
         }
