@@ -12,7 +12,9 @@ Magnetometer.prototype = {
     // TODO: Instead of single reading, this currently adds a watch on iOS
     cordova.exec(successCallback, errorCallback, "Magnetometer", "getReading", []);
   },
-  watchReadings: function(successCallback, errorCallback){
+  watchReadings: function(successCallback, errorCallback, options){
+    var frequency = (options && options.frequency && typeof options.frequency == 'number') ? options.frequency : 10000;
+
     // Start watch timer to get magnitude
     var magnetometer = this,
         id = utils.createUUID();
@@ -21,7 +23,7 @@ Magnetometer.prototype = {
       // executes callback directly from sensor listener.
       timers[id] = window.setInterval(function() {
           magnetometer.getReading(successCallback, errorCallback);
-      }, 40); // every 40 ms (25 fps)
+      }, frequency); // every 40 ms (25 fps)
     } 
     else cordova.exec(successCallback, errorCallback, "Magnetometer", "watchReadings", []);
     return id;
