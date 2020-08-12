@@ -93,10 +93,10 @@
 	CGFloat magnitude = sqrt(heading.x*heading.x + heading.y*heading.y + heading.z*heading.z);
     //NSLog(@"magnitude: %f", magnitude);
     NSMutableDictionary *jsonObj = [[NSMutableDictionary alloc] init];
-    [jsonObj setValue: [NSString stringWithFormat:@"%.1f", heading.x] forKey:@"x"];
-    [jsonObj setValue: [NSString stringWithFormat:@"%.1f", heading.y] forKey:@"y"];
-    [jsonObj setValue: [NSString stringWithFormat:@"%.1f", heading.z] forKey:@"z"];
-    [jsonObj setValue: [NSString stringWithFormat:@"%.1f", magnitude] forKey:@"magnitude"];
+    [jsonObj setValue: [NSNumber numberWithDouble: heading.x] forKey:@"x"];
+    [jsonObj setValue: [NSNumber numberWithDouble: heading.y] forKey:@"y"];
+    [jsonObj setValue: [NSNumber numberWithDouble: heading.z] forKey:@"z"];
+    [jsonObj setValue: [NSNumber numberWithDouble: magnitude] forKey:@"magnitude"];
 
     CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:jsonObj];
     [result setKeepCallbackAsBool:1];
