@@ -241,15 +241,15 @@ public class Magnetometer extends CordovaPlugin implements SensorEventListener  
     private JSONObject getReading() throws JSONException {
         JSONObject obj = new JSONObject();
 
-        obj.put("x", this.x);
-        obj.put("y", this.y);
-        obj.put("z", this.z);
+        obj.put("x", this.x / (this.x + 255));
+        obj.put("y", this.y / (this.y + 255));
+        obj.put("z", this.z / (this.z + 255));
 
         double x2 = Float.valueOf(this.x * this.x).doubleValue();
         double y2 = Float.valueOf(this.y * this.y).doubleValue();
         double z2 = Float.valueOf(this.z * this.z).doubleValue();
 
-        obj.put("magnitude", Math.sqrt(x2 + y2 + z2));
+        obj.put("magnitude", Math.sqrt(x2 + y2 + z2) / (Math.sqrt(x2 + y2 + z2) + 255));
 
         return obj;
     }
