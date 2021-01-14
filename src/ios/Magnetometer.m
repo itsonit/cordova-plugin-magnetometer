@@ -91,15 +91,12 @@
     // Compute and display the magnitude (size or strength) of the vector.
 	//      magnitude = sqrt(x^2 + y^2 + z^2)
 	CGFloat magnitude = sqrt(heading.x*heading.x + heading.y*heading.y + heading.z*heading.z);
-
-    CGFloat magnitudeNormed = magnitude / (magnitude + 255);
-
     //NSLog(@"magnitude: %f", magnitude);
     NSMutableDictionary *jsonObj = [[NSMutableDictionary alloc] init];
-    [jsonObj setValue: [NSNumber numberWithDouble: (heading.x / (heading.x + 255))] forKey:@"x"];
-    [jsonObj setValue: [NSNumber numberWithDouble: (heading.y / (heading.y + 255))] forKey:@"y"];
-    [jsonObj setValue: [NSNumber numberWithDouble: (heading.z / (heading.z + 255))] forKey:@"z"];
-    [jsonObj setValue: [NSNumber numberWithDouble: magnitudeNormed] forKey:@"magnitude"];
+    [jsonObj setValue: [NSNumber numberWithDouble: heading.x] forKey:@"x"];
+    [jsonObj setValue: [NSNumber numberWithDouble: heading.y] forKey:@"y"];
+    [jsonObj setValue: [NSNumber numberWithDouble: heading.z] forKey:@"z"];
+    [jsonObj setValue: [NSNumber numberWithDouble: magnitude] forKey:@"magnitude"];
 
     CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:jsonObj];
     [result setKeepCallbackAsBool:1];
