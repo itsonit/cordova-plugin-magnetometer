@@ -57,12 +57,12 @@
 		// No compass is available. This application cannot function without a compass,
         // so a dialog will be displayed and no magnetic data will be measured.
         self.locationManager = nil;
-        UIAlertView *noCompassAlert = [[UIAlertView alloc] initWithTitle:@"No Compass!"
+        /*UIAlertView *noCompassAlert = [[UIAlertView alloc] initWithTitle:@"No Compass!"
                                                                  message:@"This device does not have the ability to measure magnetic fields."
                                                                 delegate:nil
                                                        cancelButtonTitle:@"OK"
                                                        otherButtonTitles:nil];
-        [noCompassAlert show];
+        [noCompassAlert show];*/
 	} else {
         // heading service configuration
         self.locationManager.headingFilter = kCLHeadingFilterNone;
